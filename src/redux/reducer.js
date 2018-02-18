@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const initialState = {
-    weather: [],
-    forecast: []
+    forecast: [],
+    weather: {}
 }
 
 const API_KEY = '8b23d49b8a98da201482ad7f9e6dba8b';
@@ -34,7 +34,7 @@ export function fetchForecast (city){
     };
 }
 
-export default function reducer(state = [], action){
+export default function reducer(state = initialState, action){
     switch(action.type){
         case FETCH_WEATHER + "_FULFILLED":
             return Object.assign({}, state, {weather: action.payload});
