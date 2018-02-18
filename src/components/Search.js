@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchWeather, fetchForecast } from '../redux/reducer.js'
+import { fetchWeather, fetchForecast } from '../actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 

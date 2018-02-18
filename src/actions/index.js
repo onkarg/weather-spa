@@ -3,13 +3,13 @@ import { key as API_KEY } from '../../config'
 
 const API_URL = 'http://api.openweathermap.org/data/2.5';
 
-const REQUEST_WEATHER = "REQUEST_WEATHER"
-const REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
-const RECEIVE_WEATHER_SUCCESS = "RECEIVE_WEATHER_SUCCESS";
+export const REQUEST_WEATHER = "REQUEST_WEATHER"
+export const REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
+export const RECEIVE_WEATHER_SUCCESS = "RECEIVE_WEATHER_SUCCESS";
 
-const REQUEST_FORECAST = "REQUEST_FORECAST"
-const REQUEST_FORECAST_FAILURE = "REQUEST_FORECAST_FAILURE";
-const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
+export const REQUEST_FORECAST = "REQUEST_FORECAST"
+export const REQUEST_FORECAST_FAILURE = "REQUEST_FORECAST_FAILURE";
+export const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
 
 
 export function requestWeather(){
@@ -25,11 +25,11 @@ export function requestWeatherFailure(error){
     }
 }
 
-export function receiveWeatherSuccess(json){
+export function receiveWeatherSuccess(response){
     return {
         type: RECEIVE_WEATHER_SUCCESS,
         payload: {
-            json
+            response
         }
     };
 }
@@ -47,11 +47,11 @@ export function requestForecastFailure(error){
     }
 }
 
-export function receiveForecastSuccess(json){
+export function receiveForecastSuccess(response){
     return {
         type: RECEIVE_FORECAST_SUCCESS,
         payload: {
-            json
+            response
         }
     };
 }
@@ -62,9 +62,8 @@ export function fetchWeather (params){
     return function(dispatch) {
         dispatch(requestWeather());
     
-        return axios.get(url)
-        .then(response => response.json())
-        .then(json => dispatch(receiveWeatherSuccess(json)))
+        axios.get(url)
+        .then(response => dispatch(receiveWeatherSuccess(response)))
         .catch(err => dispatch(requestWeatherFailure(err.toString())))
     };
 }
@@ -75,9 +74,8 @@ export function fetchForecast (params){
     return function(dispatch) {
         dispatch(requestForecast());
     
-        return axios.get(url)
-        .then(response => response.json())
-        .then(json => dispatch(receiveForecastSuccess(json)))
+        axios.get(url)
+        .then(response => dispatch(receiveForecastSuccess(response)))
         .catch(err => dispatch(requestForecastFailure(err.toString())))
     };
 }
