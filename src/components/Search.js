@@ -35,7 +35,7 @@ class Search extends Component {
           <input placeholder="enter city here.."
           value={this.state.term}
           onChange={(e) => {this.handleTerm(e.target.value)}} />
-          <span><button type="submit"></button></span>
+          <span><button type="submit">Search</button></span>
         </form>
       </div>
     );
