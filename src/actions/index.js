@@ -1,20 +1,15 @@
 import axios from 'axios';
 import { key as API_KEY } from '../../config'
 
-const initialState = {
-    forecast: [],
-    weather: []
-}
-
 const API_URL = 'http://api.openweathermap.org/data/2.5';
 
 const REQUEST_WEATHER = "REQUEST_WEATHER"
-const RECEIVE_WEATHER_SUCCESS = "RECEIVE_WEATHER_SUCCESS";
 const REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
+const RECEIVE_WEATHER_SUCCESS = "RECEIVE_WEATHER_SUCCESS";
 
 const REQUEST_FORECAST = "REQUEST_FORECAST"
-const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
 const REQUEST_FORECAST_FAILURE = "REQUEST_FORECAST_FAILURE";
+const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
 
 
 export function requestWeather(){
@@ -62,7 +57,7 @@ export function receiveForecastSuccess(json){
 }
 
 export function fetchWeather (params){
-    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${param}`;
+    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${params}`;
 
     return function(dispatch) {
         dispatch(requestWeather());
@@ -75,7 +70,7 @@ export function fetchWeather (params){
 }
 
 export function fetchForecast (params){
-    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${param}`;
+    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${params}`;
 
     return function(dispatch) {
         dispatch(requestForecast());
@@ -85,15 +80,4 @@ export function fetchForecast (params){
         .then(json => dispatch(receiveForecastSuccess(json)))
         .catch(err => dispatch(requestForecastFailure(err.toString())))
     };
-}
-
-export default function reducer(state = initialState, action){
-    switch(action.type){
-        case FETCH_WEATHER:
-            return Object.assign({}, state, {weather: action.payload.data})
-        case FETCH_FORECAST:
-            return Object.assign({}, state, {forecast: action.payload.data})
-        default: 
-            return state; 
-    }
 }
