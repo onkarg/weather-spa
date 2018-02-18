@@ -5,10 +5,10 @@ class Forecast extends Component {
 
     render (){
 
-        let props = this.props.forecast;
+
         return(
             <div>
-                {props}
+
             </div>
         )
     }

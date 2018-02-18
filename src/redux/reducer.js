@@ -1,6 +1,10 @@
 import axios from 'axios';
+import { key as API_KEY } from '../../config'
 
-const API_KEY = '8b23d49b8a98da201482ad7f9e6dba8b';
+const initialState = {
+    forecast: [],
+    weather: []
+}
 
 const WEATHER_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
 const FORECAST_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
@@ -27,12 +31,12 @@ export function fetchForecast (city){
     };
 }
 
-export default function reducer(state = [], action){
+export default function reducer(state = initialState, action){
     switch(action.type){
         case FETCH_WEATHER:
-            return [ action.payload.data, ...state]
+            return Object.assign({}, state, {weather: action.payload.data})
         case FETCH_FORECAST:
-            return [ action.payload.data, ...state]
+            return Object.assign({}, state, {forecast: action.payload.data})
         default: 
             return state; 
     }
