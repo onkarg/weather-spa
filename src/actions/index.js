@@ -11,6 +11,9 @@ export const REQUEST_FORECAST = "REQUEST_FORECAST"
 export const REQUEST_FORECAST_FAILURE = "REQUEST_FORECAST_FAILURE";
 export const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
 
+export const REQUEST_LOCATION = 'REQUEST_LOCATION';
+export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
+
 
 export function requestWeather(){
     return {
@@ -56,8 +59,23 @@ export function receiveForecastSuccess(data){
     };
 }
 
+export function requestLocation() {
+	return {
+		type: REQUEST_LOCATION
+	};
+}
+
+export function receiveLocation(location) {
+	return {
+		type: RECEIVE_LOCATION,
+		payload: {
+			location
+		}
+	};
+}
+
 export function fetchWeather (params){
-    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${params}`;
+    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&${params}`;
 
     return function(dispatch) {
         dispatch(requestWeather());
@@ -70,7 +88,7 @@ export function fetchWeather (params){
 }
 
 export function fetchForecast (params){
-    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${params}`;
+    const url = `${API_URL}/forecast?appid=${API_KEY}&units=imperial&${params}`;
 
     return function(dispatch) {
         dispatch(requestForecast());
@@ -80,4 +98,25 @@ export function fetchForecast (params){
         .then(data => dispatch(receiveForecastSuccess(data)))
         .catch(err => dispatch(requestForecastFailure(err)))
     };
+}
+
+export function fetchLocation() {
+	return function (dispatch) {
+		
+		if (navigator.geolocation) {			
+			dispatch(requestLocation());
+			navigator.geolocation.getCurrentPosition(success, error);
+		} else {
+			console.log('Location cannot be retrieved...');
+		}
+
+		function success(position) {
+			const { latitude, longitude } = position.coords;
+			dispatch(receiveLocation({ latitude, longitude }));
+		}
+
+		function error(error) {
+			console.error(error);
+		}
+	}
 }

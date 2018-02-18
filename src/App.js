@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import Search from './components/Search';
-import Weather from './components/Weather';
-import Forecast from './components/Forecast';
+import Search from './containers/Search';
+import WeatherList from './containers/WeatherList';
 
 class App extends Component {
   render() {
     return (
       <div>
         <Search />
-        <Weather />
-        <Forecast />
+        <WeatherList />
       </div>
     );
   }

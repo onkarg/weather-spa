@@ -21,8 +21,8 @@ class Search extends Component {
 
   formSubmit(event){
     event.preventDefault();
-    this.props.fetchWeather(this.state.term);
-    this.props.fetchForecast(this.state.term);
+    this.props.fetchWeather(`q=${this.state.term}`);
+    this.props.fetchForecast(`q=${this.state.term}`);
     this.setState({
         term: ''
     });
