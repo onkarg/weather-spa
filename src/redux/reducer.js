@@ -10,7 +10,8 @@ const FETCH_WEATHER = "FETCH_WEATHER";
 const FETCH_FORECAST = "FETCH_FORECAST";
 
 export function fetchWeather (city){
-    const request = axios.get(`${WEATHER_URL}&q=${city},us`);
+    const url = `${WEATHER_URL}&q=${city},us`;
+    const request = axios.get(url);
     return {
         type: FETCH_WEATHER,
         payload: request
@@ -18,7 +19,8 @@ export function fetchWeather (city){
 }
 
 export function fetchForecast (city){
-    const request = axios.get(`${FORECAST_URL}&q=${city},us`);
+    const url = `${FORECAST_URL}&q=${city},us`;
+    const request = axios.get(url);
     return {
         type: FETCH_FORECAST,
         payload: request
@@ -28,7 +30,9 @@ export function fetchForecast (city){
 export default function reducer(state = [], action){
     switch(action.type){
         case FETCH_WEATHER:
-            return [ action.payload.data, ...state ];
+            return [ action.payload.data, ...state]
+        case FETCH_FORECAST:
+            return [ action.payload.data, ...state]
         default: 
             return state; 
     }
