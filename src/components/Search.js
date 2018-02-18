@@ -31,7 +31,7 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.formSubmit}>
+        <form className="" onSubmit={this.formSubmit}>
           <input placeholder="enter city here.."
           value={this.state.term}
           onChange={(e) => {this.handleTerm(e.target.value)}} />

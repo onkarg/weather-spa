@@ -25,7 +25,7 @@ export default function weather(state = initialState, action) {
     case RECEIVE_WEATHER_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        weather: action.payload.json
+        weather: action.payload.data
       });
     case REQUEST_FORECAST:
       return Object.assign({}, state, {
@@ -39,7 +39,7 @@ export default function weather(state = initialState, action) {
     case RECEIVE_FORECAST_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        forecast: action.payload.json
+        forecast: action.payload.data
       });
     default:
       return state;

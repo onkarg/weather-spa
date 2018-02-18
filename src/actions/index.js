@@ -25,11 +25,11 @@ export function requestWeatherFailure(error){
     }
 }
 
-export function receiveWeatherSuccess(response){
+export function receiveWeatherSuccess(data){
     return {
         type: RECEIVE_WEATHER_SUCCESS,
         payload: {
-            response
+            data
         }
     };
 }
@@ -47,11 +47,11 @@ export function requestForecastFailure(error){
     }
 }
 
-export function receiveForecastSuccess(response){
+export function receiveForecastSuccess(data){
     return {
         type: RECEIVE_FORECAST_SUCCESS,
         payload: {
-            response
+            data
         }
     };
 }
@@ -63,8 +63,9 @@ export function fetchWeather (params){
         dispatch(requestWeather());
     
         axios.get(url)
-        .then(response => dispatch(receiveWeatherSuccess(response)))
-        .catch(err => dispatch(requestWeatherFailure(err.toString())))
+        .then(response => response.data)
+        .then(data => dispatch(receiveWeatherSuccess(data)))
+        .catch(err => dispatch(requestWeatherFailure(err)))
     };
 }
 
@@ -75,7 +76,8 @@ export function fetchForecast (params){
         dispatch(requestForecast());
     
         axios.get(url)
-        .then(response => dispatch(receiveForecastSuccess(response)))
-        .catch(err => dispatch(requestForecastFailure(err.toString())))
+        .then(response => response.data)
+        .then(data => dispatch(receiveForecastSuccess(data)))
+        .catch(err => dispatch(requestForecastFailure(err)))
     };
 }

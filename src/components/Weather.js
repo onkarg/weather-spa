@@ -5,18 +5,32 @@ class Weather extends Component {
 
   
     render() {
+      const { isFetching, weather, forecast } = this.props;
+      console.log(weather)
+      if(weather.error){
+        return (
+          <p>There was an error: {weather.error}</p>
+        );
+      }
 
+      if(!weather.weather || !weather.forecast || !isFetching){
+        return (
+          <p>Loading...</p>
+        );
+      }
     return (
       <div>
-
+        {weather}
       </div>
     );
   }
 }
 
-function mapStateToProps({ weather }) {
+const mapStateToProps = (state) => {
+  const { weather, forecast } = state;
   return {
-    weather
+    weather,
+    forecast
   };
 }
 
