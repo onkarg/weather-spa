@@ -6,8 +6,7 @@ const initialState = {
     weather: []
 }
 
-const WEATHER_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
-const FORECAST_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}`;
+const API_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=imperial`;
 
 
 const FETCH_WEATHER = "FETCH_WEATHER";
