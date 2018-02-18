@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import Search from './components/Search';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+
 
 class App extends Component {
   render() {
+    console.log(this.props.weather)
     return (
       <div>
         <Search />
@@ -12,4 +14,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state){
+  return {
+    weather: state.weather
+  }
+}
+
+export default connect(mapStateToProps)(App);

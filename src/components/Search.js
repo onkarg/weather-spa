@@ -5,10 +5,10 @@ import { bindActionCreators } from 'redux';
 
 class Search extends Component {
   constructor(props){
-    super(props)
+    super(props);
     this.state = {
       term: ""
-    }
+    };
     this.handleTerm = this.handleTerm.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
   }
@@ -28,7 +28,6 @@ class Search extends Component {
   }
   
   render() {
-    console.log(this.state.term)
     return (
       <div>
         <form onSubmit={this.formSubmit}>
