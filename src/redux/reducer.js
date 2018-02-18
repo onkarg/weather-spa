@@ -6,27 +6,84 @@ const initialState = {
     weather: []
 }
 
-const API_URL = `http://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=imperial`;
+const API_URL = 'http://api.openweathermap.org/data/2.5';
+
+const REQUEST_WEATHER = "REQUEST_WEATHER"
+const RECEIVE_WEATHER_SUCCESS = "RECEIVE_WEATHER_SUCCESS";
+const REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
+
+const REQUEST_FORECAST = "REQUEST_FORECAST"
+const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
+const REQUEST_FORECAST_FAILURE = "REQUEST_FORECAST_FAILURE";
 
 
-const FETCH_WEATHER = "FETCH_WEATHER";
-const FETCH_FORECAST = "FETCH_FORECAST";
-
-export function fetchWeather (city){
-    const url = `${WEATHER_URL}&q=${city},us`;
-    const request = axios.get(url);
+export function requestWeather(){
     return {
-        type: FETCH_WEATHER,
-        payload: request
+        type: REQUEST_WEATHER
     };
 }
 
-export function fetchForecast (city){
-    const url = `${FORECAST_URL}&q=${city},us`;
-    const request = axios.get(url);
+export function requestWeatherFailure(error){
     return {
-        type: FETCH_FORECAST,
-        payload: request
+        type: REQUEST_WEATHER_FAILURE,
+        error
+    }
+}
+
+export function receiveWeatherSuccess(json){
+    return {
+        type: RECEIVE_WEATHER_SUCCESS,
+        payload: {
+            json
+        }
+    };
+}
+
+export function requestForecast(){
+    return {
+        type: REQUEST_FORECAST
+    };
+}
+
+export function requestForecastFailure(error){
+    return {
+        type: REQUEST_FORECAST_FAILURE,
+        error
+    }
+}
+
+export function receiveForecastSuccess(json){
+    return {
+        type: RECEIVE_FORECAST_SUCCESS,
+        payload: {
+            json
+        }
+    };
+}
+
+export function fetchWeather (params){
+    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${param}`;
+
+    return function(dispatch) {
+        dispatch(requestWeather());
+    
+        return axios.get(url)
+        .then(response => response.json())
+        .then(json => dispatch(receiveWeatherSuccess(json)))
+        .catch(err => dispatch(requestWeatherFailure(err.toString())))
+    };
+}
+
+export function fetchForecast (params){
+    const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&q=${param}`;
+
+    return function(dispatch) {
+        dispatch(requestForecast());
+    
+        return axios.get(url)
+        .then(response => response.json())
+        .then(json => dispatch(receiveForecastSuccess(json)))
+        .catch(err => dispatch(requestForecastFailure(err.toString())))
     };
 }
 
