@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { fetchWeather, fetchForecast } from '../actions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from "react";
+import { fetchWeather, fetchForecast } from "../actions";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 class Search extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       term: ""
@@ -13,35 +13,61 @@ class Search extends Component {
     this.formSubmit = this.formSubmit.bind(this);
   }
 
-  handleTerm(term){
+  handleTerm(term) {
     this.setState({
       term
-    })
+    });
   }
 
-  formSubmit(event){
+  formSubmit(event) {
     event.preventDefault();
     this.props.fetchWeather(`q=${this.state.term}`);
     this.props.fetchForecast(`q=${this.state.term}`);
     this.setState({
-        term: ''
+      term: ""
     });
   }
-  
+
   render() {
     return (
-      <div>
-        <form className="" onSubmit={this.formSubmit}>
-          <input placeholder="enter city here.."
-          value={this.state.term}
-          onChange={(e) => {this.handleTerm(e.target.value)}} />
-          <span><button type="submit">Search</button></span>
-        </form>
-      </div>
+      <header className="masthead text-center">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-9 mx-auto">
+              <h1 className="mb-5">
+                WEATHER
+              </h1>
+            </div>
+            <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
+              <form onSubmit={this.formSubmit}>
+                <div className="form-row">
+                  <div className="col-12 col-md-9 mb-2 mb-md-0">
+                    <input
+                      className="form-control form-control-lg"
+                      placeholder="Enter your city..."
+                      value={this.state.term}
+                      onChange={e => {
+                        this.handleTerm(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div className="col-12 col-md-3">
+                    <button
+                      type="submit"
+                      className="btn btn-block btn-lg btn-primary"
+                    >
+                      Find
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
     );
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather, fetchForecast }, dispatch);

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const WeatherCondition = ({ conditions }) =>
 	<div>
 		{Object.keys(conditions).map((key) => {
-			return <span key={key}>{conditions[key].main}</span>
+			return <span key={key}><h1>{conditions[key].main}</h1></span>
 		})}
 	</div>
 

@@ -6,6 +6,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
+      }, {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -13,11 +16,11 @@ module.exports = {
     extensions: ["*", ".js", ".jsx"]
   },
   output: {
-    path: __dirname + "/public",
+    path: __dirname + "/dist",
     publicPath: "/",
     filename: "bundle.js"
   },
   devServer: {
-    contentBase: "./public"
+    contentBase: "./dist"
   }
 };

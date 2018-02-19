@@ -20,7 +20,7 @@ export default function weather(state = initialState, action) {
     case REQUEST_WEATHER_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.error
+        error: action.error.response.data.message
       });
     case RECEIVE_WEATHER_SUCCESS:
       return Object.assign({}, state, {
@@ -34,7 +34,7 @@ export default function weather(state = initialState, action) {
     case REQUEST_FORECAST_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
-        error: action.error
+        error: action.error.response.data.message
       });
     case RECEIVE_FORECAST_SUCCESS:
       return Object.assign({}, state, {
