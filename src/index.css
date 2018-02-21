@@ -34,9 +34,7 @@
   }
   
   body {
-    background-image: url("/images/topography.svg"),
-      linear-gradient(110deg, #f93d66, #6d47d9);
-    background-size: 340px, auto;
+    background-image: linear-gradient(110deg, #f93d66, #6d47d9);
     min-height: calc(100vh - 100px);
     margin: 50px;
     /* background: white; */

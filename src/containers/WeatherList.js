@@ -9,26 +9,21 @@ import Loading from "../components/Loading";
 
 class WeatherList extends Component {
 
-  componentWillMount(){
-    this.props.fetchLocation()
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    if (this.props.location !== nextProps.location) {
-      const { latitude, longitude } = nextProps.location.data;
-      this.updateWeather(`lat=${latitude}&lon=${longitude}`);
-    }
-  }
+	componentWillUpdate(nextProps, nextState) {
+		if (this.props.location !== nextProps.location) {
+			const { latitude, longitude } = nextProps.location.data;
+			this.updateWeather(`lat=${latitude}&lon=${longitude}`);
+		}
+	}
 
   updateWeather(params) {
-    this.props.dispatch(fetchWeather(params));
-    this.props.dispatch(fetchForecast(params));
+    this.props.fetchWeather(params);
+    this.props.fetchForecast(params);
   }
 
-
   render() {
+    console.log(this.props)
     const { isFetching, weather } = this.props;
-    console.log(weather);
     if (weather.error) {
       return <p>Please try again: {weather.error}</p>;
     }
@@ -50,9 +45,11 @@ class WeatherList extends Component {
 }
 
 function mapStateToProps(state) {
+  const { weather, location } = state;
   return {
-    weather: state.weather
+    weather,
+    location
   };
 }
 
-export default connect(mapStateToProps, {fetchLocation})(WeatherList);
+export default connect(mapStateToProps, {fetchLocation, fetchWeather, fetchForecast})(WeatherList);
