@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Search from "./containers/Search";
 import WeatherList from "./containers/WeatherList";
 import CitiesList from "./containers/CitiesList";
-import Header from "./containers/Header";
 
 class App extends Component {
   render() {
