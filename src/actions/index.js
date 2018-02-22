@@ -14,6 +14,10 @@ export const RECEIVE_FORECAST_SUCCESS = "RECEIVE_FORECAST_SUCCESS";
 export const REQUEST_LOCATION = 'REQUEST_LOCATION';
 export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
 
+export const ADD_CITY = 'ADD_CITY';
+export const REMOVE_CITY = 'REMOVE_CITY';
+
+//requesting weather actions
 
 export function requestWeather(){
     return {
@@ -72,6 +76,25 @@ export function receiveLocation(location) {
 			location
 		}
 	};
+}
+
+// cities list actions
+
+let nextCityId = 0;
+
+export function addCity(text){
+    return {
+        type: ADD_CITY,
+        id: nextCityId++,
+        text
+    }
+}
+
+export function removeCity(id){
+    return {
+        type: REMOVE_CITY,
+        id
+    }
 }
 
 export function fetchWeather (params){
