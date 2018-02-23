@@ -1,7 +1,7 @@
 import axios from "axios";
 import { key as API_KEY } from "../../config";
 
-const API_URL = "http://api.openweathermap.org/data/2.5";
+const API_URL = " https://crossorigin.me/http://api.openweathermap.org/data/2.5";
 
 export const REQUEST_WEATHER = "REQUEST_WEATHER";
 export const REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
