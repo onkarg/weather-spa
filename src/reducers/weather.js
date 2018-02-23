@@ -11,7 +11,7 @@ const initialState = {
   isFetching: true
 };
 
-export default function weather(state = initialState, action) {
+const weather = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_WEATHER:
       return Object.assign({}, state, {
@@ -45,3 +45,5 @@ export default function weather(state = initialState, action) {
       return state;
   }
 }
+
+export default weather;

@@ -40,7 +40,7 @@ class WeatherList extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   const { weather, location } = state;
   return {
     weather,

@@ -48,7 +48,7 @@ class Search extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ fetchWeather, fetchForecast, addCity }, dispatch);
 }
 

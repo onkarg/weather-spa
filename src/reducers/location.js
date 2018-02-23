@@ -2,7 +2,7 @@ import { REQUEST_LOCATION, RECEIVE_LOCATION } from "../actions";
 
 const initialState = {};
 
-export default function location(state = initialState, action) {
+const location = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_LOCATION:
       return Object.assign({}, state, {
@@ -17,3 +17,5 @@ export default function location(state = initialState, action) {
       return state;
   }
 }
+
+export default location;

@@ -19,20 +19,20 @@ export const REMOVE_CITY = "REMOVE_CITY";
 
 //requesting weather actions
 
-export function requestWeather() {
+export const requestWeather = () => {
   return {
     type: REQUEST_WEATHER
   };
 }
 
-export function requestWeatherFailure(error) {
+export const requestWeatherFailure = (error) => {
   return {
     type: REQUEST_WEATHER_FAILURE,
     error
   };
 }
 
-export function receiveWeatherSuccess(data) {
+export const receiveWeatherSuccess = (data) => {
   return {
     type: RECEIVE_WEATHER_SUCCESS,
     payload: {
@@ -41,20 +41,20 @@ export function receiveWeatherSuccess(data) {
   };
 }
 
-export function requestForecast() {
+export const requestForecast = () => {
   return {
     type: REQUEST_FORECAST
   };
 }
 
-export function requestForecastFailure(error) {
+export const requestForecastFailure = (error) => {
   return {
     type: REQUEST_FORECAST_FAILURE,
     error
   };
 }
 
-export function receiveForecastSuccess(data) {
+export const receiveForecastSuccess = (data) => {
   return {
     type: RECEIVE_FORECAST_SUCCESS,
     payload: {
@@ -63,13 +63,13 @@ export function receiveForecastSuccess(data) {
   };
 }
 
-export function requestLocation() {
+export const requestLocation = () => {
   return {
     type: REQUEST_LOCATION
   };
 }
 
-export function receiveLocation(location) {
+export const receiveLocation = (location) => {
   return {
     type: RECEIVE_LOCATION,
     payload: {
@@ -82,7 +82,7 @@ export function receiveLocation(location) {
 
 let nextCityId = 0;
 
-export function addCity(text) {
+export const addCity = (text) => {
   return {
     type: ADD_CITY,
     id: nextCityId++,
@@ -90,14 +90,14 @@ export function addCity(text) {
   };
 }
 
-export function removeCity(id) {
+export const removeCity= (id) => {
   return {
     type: REMOVE_CITY,
     id
   };
 }
 
-export function fetchWeather(params) {
+export const fetchWeather = (params) => {
   const url = `${API_URL}/weather?appid=${API_KEY}&units=imperial&${params}`;
 
   return function(dispatch) {
@@ -111,7 +111,7 @@ export function fetchWeather(params) {
   };
 }
 
-export function fetchForecast(params) {
+export const fetchForecast = (params) => {
   const url = `${API_URL}/forecast?appid=${API_KEY}&units=imperial&${params}`;
 
   return function(dispatch) {
@@ -125,7 +125,7 @@ export function fetchForecast(params) {
   };
 }
 
-export function fetchLocation() {
+export const fetchLocation = () => {
   return function(dispatch) {
     if (navigator.geolocation) {
       dispatch(requestLocation());
