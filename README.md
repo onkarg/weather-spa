@@ -27,7 +27,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 > git clone https://github.com/onkarg/weather-spa.git
 > cd weather-spa
 > touch config.js and open the file
-> add `module.exports = {key: 'your api key goes here' }` in the file and save
+> add     module.exports = {key: 'your api key goes here' }     in the file and save
 > add config.js in your gitignore file
 > npm install
 > npm start
@@ -42,7 +42,7 @@ Extract the contents of the zip file, then open your terminal, change to the pro
 
 ```
 >> create config.js in root of the weather-spa directory
-> add `module.exports = {key: 'your api key goes here'}` in the file and save
+> add     module.exports = {key: 'your api key goes here' }     in the file and save
 > add config.js in your gitignore file
 > npm install
 > npm start
