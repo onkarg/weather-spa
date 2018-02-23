@@ -640,7 +640,7 @@ var _config = __webpack_require__(78);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var API_URL = " https://crossorigin.me/http://api.openweathermap.org/data/2.5";
+var API_URL = "https://api.openweathermap.org/data/2.5";
 
 var REQUEST_WEATHER = exports.REQUEST_WEATHER = "REQUEST_WEATHER";
 var REQUEST_WEATHER_FAILURE = exports.REQUEST_WEATHER_FAILURE = "REQUEST_WEATHER_FAILURE";
