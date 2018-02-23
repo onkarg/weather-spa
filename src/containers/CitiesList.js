@@ -3,7 +3,7 @@ import { fetchWeather, removeCity } from "../actions";
 import CityList from "../components/CityList";
 
 const mapStateToProps = state => {
-const { cities } = state;
+  const { cities } = state;
   return {
     cities
   };
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(fetchWeather(city));
     },
     onRemoveClick: id => {
-        dispatch(removeCity(id));
+      dispatch(removeCity(id));
     }
   };
 };

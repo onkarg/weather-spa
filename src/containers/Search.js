@@ -35,7 +35,7 @@ class Search extends Component {
         <form onSubmit={this.formSubmit} className="find-location">
           <input
             type="text"
-            placeholder="Find your location..."
+            placeholder="Please type city... Eg. Phoenix, Boston, Los Angeles"
             value={this.state.term}
             onChange={e => {
               this.handleTerm(e.target.value);

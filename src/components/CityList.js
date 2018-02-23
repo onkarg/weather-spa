@@ -16,7 +16,7 @@ const CityList = ({ cities, onCityClick, onRemoveClick }) => (
           className="btn btn-danger"
           onClick={() => onRemoveClick(city.id)}
         >
-        Delete
+          Delete
         </button>
       </div>
     ))}
@@ -30,7 +30,8 @@ CityList.propTypes = {
       city: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
-  onCityClick: PropTypes.func.isRequired
+  onCityClick: PropTypes.func.isRequired,
+  onRemoveClick: PropTypes.func.isRequired
 };
 
 export default CityList;

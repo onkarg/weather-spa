@@ -31,7 +31,6 @@ class App extends Component {
             <CitiesList />
           </div>
         </div>
-        
       </div>
     );
   }

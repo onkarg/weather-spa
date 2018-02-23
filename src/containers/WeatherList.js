@@ -44,7 +44,7 @@ function mapStateToProps(state) {
   const { weather, location } = state;
   return {
     weather,
-    location,
+    location
   };
 }
 
