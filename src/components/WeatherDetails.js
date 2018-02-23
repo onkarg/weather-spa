@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const WeatherDetails = ({ city, condition, temp, lowTemp, highTemp }) => (
-  <div class="forecast-container">
-    <div class="today forecast">
+  <div className="forecast-container">
+    <div className="today forecast">
       <div className="forecast-content">
         <div className="location">{city}</div>
         {Object.keys(condition).map(key => {

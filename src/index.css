@@ -1122,8 +1122,9 @@
      .site-header .branding .logo {
        margin-right: 10px; }
      .site-header .branding .site-title {
+       font-family: Pacifico, cursive;
+       font-size: 4em;
        margin-bottom: 5px;
-       font-size: 16px;
        font-size: 1.1428571429em;
        color: white; }
      .site-header .branding .site-description {
@@ -1132,6 +1133,10 @@
        display: block;
        color: #bfc1c8; }
  
+ .site-title {
+  font-family: Pacifico, cursive;
+  font-size: 4em;
+ }
  .main-navigation {
    float: right; }
    .main-navigation .menu-toggle, .main-navigation .menu {
@@ -1632,6 +1637,10 @@
      .sidebar .widget.top-rated .rating strong {
        color: #009ad8; }
  
+  .list-group-item {
+    background: #323544;
+    color: white;
+  }
  /*
   * Footer Styles
   */

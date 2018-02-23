@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
  
-const City = ({ onClick, city }) => (
-  <li onClick={onClick}>
+const City = ({ city }) => (
+  <div>
     {city}
-  </li>
+  </div>
 )
  
 City.propTypes = {

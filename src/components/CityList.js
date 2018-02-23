@@ -3,15 +3,24 @@ import PropTypes from "prop-types";
 import City from "./City";
 
 const CityList = ({ cities, onCityClick, onRemoveClick }) => (
-  <ul>
+  <div className="list-group">
     {cities.map(city => (
+      <div
+        key={city.id}
+        onClick={() => onCityClick(`q=${city.city},us`)}
+        className="list-group-item list-group-item-action"
+      >
+        <City {...city} />
 
-        <div key={city.id}>
-            <City {...city} onClick={() => onCityClick(`q=${city.city},us`)} />
-            <button onClick={() => onRemoveClick(city.id)}>X</button>
-        </div>
+        <button
+          className="btn btn-danger"
+          onClick={() => onRemoveClick(city.id)}
+        >
+        Delete
+        </button>
+      </div>
     ))}
-  </ul>
+  </div>
 );
 
 CityList.propTypes = {

@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="site-content">
-        <div className="site-header">
+        <div className="site-header text-center">
           <div className="container">
             <div className="logo-type">
               <h1 className="site-title">Weatherify</h1>
