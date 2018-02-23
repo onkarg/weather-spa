@@ -42,7 +42,7 @@ Extract the contents of the zip file, then open your terminal, change to the pro
 
 ```
 >> create config.js in root of the weather-spa directory
-> add `module.exports = {key: 'your api key goes here'}` in the file and save
+> add     module.exports = {key: 'your api key goes here' }     in the file and save
 > add config.js in your gitignore file
 > npm install
 > npm start
