@@ -17,7 +17,7 @@ module.exports = {
   },
   output: {
     path: __dirname + "/dist",
-    publicPath: "/",
+    publicPath: "/weather-spa/",
     filename: "bundle.js"
   },
   devServer: {

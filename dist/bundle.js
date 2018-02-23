@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "/weather-spa/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 44);
@@ -630,20 +630,7 @@ module.exports = emptyFunction;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.REMOVE_CITY = exports.ADD_CITY = exports.RECEIVE_LOCATION = exports.REQUEST_LOCATION = exports.RECEIVE_FORECAST_SUCCESS = exports.REQUEST_FORECAST_FAILURE = exports.REQUEST_FORECAST = exports.RECEIVE_WEATHER_SUCCESS = exports.REQUEST_WEATHER_FAILURE = exports.REQUEST_WEATHER = undefined;
-exports.requestWeather = requestWeather;
-exports.requestWeatherFailure = requestWeatherFailure;
-exports.receiveWeatherSuccess = receiveWeatherSuccess;
-exports.requestForecast = requestForecast;
-exports.requestForecastFailure = requestForecastFailure;
-exports.receiveForecastSuccess = receiveForecastSuccess;
-exports.requestLocation = requestLocation;
-exports.receiveLocation = receiveLocation;
-exports.addCity = addCity;
-exports.removeCity = removeCity;
-exports.fetchWeather = fetchWeather;
-exports.fetchForecast = fetchForecast;
-exports.fetchLocation = fetchLocation;
+exports.fetchLocation = exports.fetchForecast = exports.fetchWeather = exports.removeCity = exports.addCity = exports.receiveLocation = exports.requestLocation = exports.receiveForecastSuccess = exports.requestForecastFailure = exports.requestForecast = exports.receiveWeatherSuccess = exports.requestWeatherFailure = exports.requestWeather = exports.REMOVE_CITY = exports.ADD_CITY = exports.RECEIVE_LOCATION = exports.REQUEST_LOCATION = exports.RECEIVE_FORECAST_SUCCESS = exports.REQUEST_FORECAST_FAILURE = exports.REQUEST_FORECAST = exports.RECEIVE_WEATHER_SUCCESS = exports.REQUEST_WEATHER_FAILURE = exports.REQUEST_WEATHER = undefined;
 
 var _axios = __webpack_require__(59);
 
@@ -671,85 +658,85 @@ var REMOVE_CITY = exports.REMOVE_CITY = "REMOVE_CITY";
 
 //requesting weather actions
 
-function requestWeather() {
+var requestWeather = exports.requestWeather = function requestWeather() {
   return {
     type: REQUEST_WEATHER
   };
-}
+};
 
-function requestWeatherFailure(error) {
+var requestWeatherFailure = exports.requestWeatherFailure = function requestWeatherFailure(error) {
   return {
     type: REQUEST_WEATHER_FAILURE,
     error: error
   };
-}
+};
 
-function receiveWeatherSuccess(data) {
+var receiveWeatherSuccess = exports.receiveWeatherSuccess = function receiveWeatherSuccess(data) {
   return {
     type: RECEIVE_WEATHER_SUCCESS,
     payload: {
       data: data
     }
   };
-}
+};
 
-function requestForecast() {
+var requestForecast = exports.requestForecast = function requestForecast() {
   return {
     type: REQUEST_FORECAST
   };
-}
+};
 
-function requestForecastFailure(error) {
+var requestForecastFailure = exports.requestForecastFailure = function requestForecastFailure(error) {
   return {
     type: REQUEST_FORECAST_FAILURE,
     error: error
   };
-}
+};
 
-function receiveForecastSuccess(data) {
+var receiveForecastSuccess = exports.receiveForecastSuccess = function receiveForecastSuccess(data) {
   return {
     type: RECEIVE_FORECAST_SUCCESS,
     payload: {
       data: data
     }
   };
-}
+};
 
-function requestLocation() {
+var requestLocation = exports.requestLocation = function requestLocation() {
   return {
     type: REQUEST_LOCATION
   };
-}
+};
 
-function receiveLocation(location) {
+var receiveLocation = exports.receiveLocation = function receiveLocation(location) {
   return {
     type: RECEIVE_LOCATION,
     payload: {
       location: location
     }
   };
-}
+};
 
 // cities list actions
 
 var nextCityId = 0;
 
-function addCity(text) {
+var addCity = exports.addCity = function addCity(text) {
   return {
     type: ADD_CITY,
     id: nextCityId++,
     text: text
   };
-}
+};
 
-function removeCity(id) {
+var removeCity = exports.removeCity = function removeCity(id) {
   return {
     type: REMOVE_CITY,
     id: id
   };
-}
+};
 
-function fetchWeather(params) {
+var fetchWeather = exports.fetchWeather = function fetchWeather(params) {
   var url = API_URL + "/weather?appid=" + _config.key + "&units=imperial&" + params;
 
   return function (dispatch) {
@@ -763,9 +750,9 @@ function fetchWeather(params) {
       return dispatch(requestWeatherFailure(err));
     });
   };
-}
+};
 
-function fetchForecast(params) {
+var fetchForecast = exports.fetchForecast = function fetchForecast(params) {
   var url = API_URL + "/forecast?appid=" + _config.key + "&units=imperial&" + params;
 
   return function (dispatch) {
@@ -779,9 +766,9 @@ function fetchForecast(params) {
       return dispatch(requestForecastFailure(err));
     });
   };
-}
+};
 
-function fetchLocation() {
+var fetchLocation = exports.fetchLocation = function fetchLocation() {
   return function (dispatch) {
     if (navigator.geolocation) {
       dispatch(requestLocation());
@@ -802,7 +789,7 @@ function fetchLocation() {
       console.error(error);
     }
   };
-}
+};
 
 /***/ }),
 /* 5 */
@@ -21145,9 +21132,9 @@ var Search = function (_Component) {
   return Search;
 }(_react.Component);
 
-function mapDispatchToProps(dispatch) {
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return (0, _redux.bindActionCreators)({ fetchWeather: _actions.fetchWeather, fetchForecast: _actions.fetchForecast, addCity: _actions.addCity }, dispatch);
-}
+};
 
 exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Search);
 
@@ -22048,9 +22035,7 @@ module.exports = function spread(callback) {
 "use strict";
 
 
-module.exports = {
-    key: '8b23d49b8a98da201482ad7f9e6dba8b'
-};
+module.exports = { key: "8b23d49b8a98da201482ad7f9e6dba8b" };
 
 /***/ }),
 /* 79 */
@@ -24043,7 +24028,7 @@ var WeatherList = function (_Component) {
   return WeatherList;
 }(_react.Component);
 
-function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state) {
   var weather = state.weather,
       location = state.location;
 
@@ -24051,7 +24036,7 @@ function mapStateToProps(state) {
     weather: weather,
     location: location
   };
-}
+};
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, {
   fetchLocation: _actions.fetchLocation,
@@ -24636,7 +24621,6 @@ exports.default = rootReducer;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = weather;
 
 var _actions = __webpack_require__(4);
 
@@ -24644,7 +24628,7 @@ var initialState = {
   isFetching: true
 };
 
-function weather() {
+var weather = function weather() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
@@ -24680,7 +24664,9 @@ function weather() {
     default:
       return state;
   }
-}
+};
+
+exports.default = weather;
 
 /***/ }),
 /* 120 */
@@ -24692,13 +24678,12 @@ function weather() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = location;
 
 var _actions = __webpack_require__(4);
 
 var initialState = {};
 
-function location() {
+var location = function location() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments[1];
 
@@ -24715,7 +24700,9 @@ function location() {
     default:
       return state;
   }
-}
+};
+
+exports.default = location;
 
 /***/ }),
 /* 121 */
@@ -24727,13 +24714,12 @@ function location() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = cities;
 
 var _actions = __webpack_require__(4);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-function cities() {
+var cities = function cities() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
@@ -24750,7 +24736,9 @@ function cities() {
     default:
       return state;
   }
-}
+};
+
+exports.default = cities;
 
 /***/ }),
 /* 122 */
