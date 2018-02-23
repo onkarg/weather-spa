@@ -17,7 +17,8 @@ SPA with focus on key features:
 
 ### Getting Started
 
-There are two methods for getting started with this repo.
+There are two methods for getting started with this repo, before you start with these methods please aquire yourself an API key from [OpenWeatherMap](https://openweathermap.org/)
+
 
 #### Familiar with Git?
 Checkout this repo, install dependencies, then start the gulp process with the following:
@@ -25,6 +26,9 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 > git clone https://github.com/onkarg/weather-spa.git
 > cd weather-spa
+> touch config.js and open the file
+> add `module.exports = {key: 'your api key goes here' }` in the file and save
+> add config.js in your gitignore file
 > npm install
 > npm start
 ```
@@ -37,6 +41,9 @@ Click `Download ZIP`
 Extract the contents of the zip file, then open your terminal, change to the project directory, and:
 
 ```
+>> create config.js in root of the weather-spa directory
+> add `module.exports = {key: 'your api key goes here'}` in the file and save
+> add config.js in your gitignore file
 > npm install
 > npm start
 > project hosted at http://localhost:8080/
