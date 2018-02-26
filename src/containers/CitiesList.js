@@ -3,7 +3,7 @@ import { fetchWeather, removeCity } from "../actions";
 import CityList from "../components/CityList";
 
 const mapStateToProps = state => {
-  const { cities } = state;
+  const { cities, weather } = state;
   return {
     cities
   };

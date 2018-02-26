@@ -5,8 +5,15 @@ import Loading from "../components/Loading";
 import WeatherDetails from "../components/WeatherDetails";
 
 class WeatherList extends Component {
+  
+  componentDidMount(){
+    const { latitude, longitude } = this.props.location.data;
+    this.updateWeather(`lat=${latitude}&lon=${longitude}`);
+  }
+  
   componentWillUpdate(nextProps, nextState) {
     if (this.props.location !== nextProps.location) {
+      console.log(nextProps.location.data)
       const { latitude, longitude } = nextProps.location.data;
       this.updateWeather(`lat=${latitude}&lon=${longitude}`);
     }
@@ -14,18 +21,29 @@ class WeatherList extends Component {
 
   updateWeather(params) {
     this.props.fetchWeather(params);
-    this.props.fetchForecast(params);
   }
 
   render() {
     console.log(this.props);
-    const { isFetching, weather } = this.props;
-    if (weather.error) {
-      return <p>Please try again: {weather.error}</p>;
+    const { isFetching, isFetchingLocation, weather } = this.props;
+    {
+      !weather.error ? (
+        <p>Please try again: {weather.error}</p>
+      ) : (
+        <p>Loading...please wait</p>
+      );
     }
 
-    if (weather.current) {
-      return (
+    {
+      isFetchingLocation ? (
+        <p>Trying to get current location</p>
+      ) : (
+        <p>Loading...please wait</p>
+      );
+    }
+
+    {
+      weather.current ? (
         <WeatherDetails
           city={weather.current.name}
           condition={weather.current.weather}
@@ -33,20 +51,20 @@ class WeatherList extends Component {
           lowTemp={weather.current.main.temp_min}
           highTemp={weather.current.main.temp_max}
         />
+      ) : (
+        <div />
       );
     }
-
-    return <div />;
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const { weather, location } = state;
   return {
     weather,
     location
   };
-}
+};
 
 export default connect(mapStateToProps, {
   fetchLocation,

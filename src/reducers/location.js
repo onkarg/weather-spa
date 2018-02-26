@@ -1,21 +1,32 @@
-import { REQUEST_LOCATION, RECEIVE_LOCATION } from "../actions";
+import {
+  REQUEST_LOCATION,
+  REQUEST_LOCATION_FAILURE,
+  RECEIVE_LOCATION_SUCCESS
+} from "../actions";
 
-const initialState = {};
+const initialState = {
+  isFetchingLocation: true
+};
 
 const location = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_LOCATION:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetchingLocation: true
       });
-    case RECEIVE_LOCATION:
+    case REQUEST_LOCATION_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false,
+        isFetchingLocation: false,
+        error: action.error.response.data.message
+      });
+    case RECEIVE_LOCATION_SUCCESS:
+      return Object.assign({}, state, {
+        isFetchingLocation: false,
         data: action.payload.location
       });
     default:
       return state;
   }
-}
+};
 
 export default location;
