@@ -26,37 +26,42 @@ class WeatherList extends Component {
   render() {
     console.log(this.props);
     const { isFetching, isFetchingLocation, weather } = this.props;
-    {
-      !weather.error ? (
-        <p>Please try again: {weather.error}</p>
-      ) : (
-        <p>Loading...please wait</p>
-      );
-    }
+    return (
+      <div>
+      {
+        !weather.error ? (
+          <p>Please try again: {weather.error}</p>
+        ) : (
+          <p>Loading...please wait</p>
+        )
+      }
 
-    {
-      isFetchingLocation ? (
-        <p>Trying to get current location</p>
-      ) : (
-        <p>Loading...please wait</p>
-      );
-    }
+      {
+        isFetchingLocation ? (
+          <p>Trying to get current location</p>
+        ) : (
+          <p>Loading...please wait</p>
+        )
+      }
 
-    {
-      weather.current ? (
-        <WeatherDetails
-          city={weather.current.name}
-          condition={weather.current.weather}
-          temp={weather.current.main.temp}
-          lowTemp={weather.current.main.temp_min}
-          highTemp={weather.current.main.temp_max}
-        />
-      ) : (
-        <div />
-      );
-    }
+      {
+        weather.current ? (
+          <WeatherDetails
+            city={weather.current.name}
+            condition={weather.current.weather}
+            temp={weather.current.main.temp}
+            lowTemp={weather.current.main.temp_min}
+            highTemp={weather.current.main.temp_max}
+          />
+        ) : (
+          <div />
+        )
+      }
+      </div>
+    )
   }
 }
+
 
 const mapStateToProps = state => {
   const { weather, location } = state;
