@@ -34,7 +34,7 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 ```
 
 #### Not Familiar with Git?
-Click [here](https://github.com/onkarg/weather-spa.git) then click `Clone or Download` button.
+Click the green `Clone or Download` button above
 
 Click `Download ZIP`
 
